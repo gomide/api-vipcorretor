@@ -20,7 +20,7 @@ class PropertySchema extends Schema {
         .inTable("owners")
         .onUpdate("CASCADE")
         .onDelete("CASCADE") 
-      table.string("descricao")
+      table.string("descricao").notNullable()
       table.integer("departamento")
       table.integer("id_proprietario")
       table.integer("id_captador")
