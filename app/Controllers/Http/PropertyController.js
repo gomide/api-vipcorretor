@@ -25,13 +25,39 @@ class PropertyController {
    * POST properties
    */
   async store ({ auth, request, response }) {
-    const { id } = auth.user
+   
 
     const data = request.only([
+     
+      'owner_id',
+      'descricao',
+      'departamento',
+      'id_proprietario',
+      'id_captador',
+      'numeroAndar',
+      'preco',
+      'numeroElevador',
+      'dataConstrucao',
+      'areaPrivativa',
+      'areaTotal',
+      'valorAgio',
+      'saldoDevedor',
+      'valorCondominio',
+      'permuta',
+      'dataCadastro',
+      'codigoAnuncio',
+      'endereco',
+      'cep',
+      'geolocalizacao',
+      'situacao',
+      'empresa',
+      'tipo',
+      'bairro',
+      'regiao'
 
     ])
 
-    const property = await Property.create({...data, user_id: id })
+    const property = await Property.create({...data, user_id: 1 })
   }
 
   /**
