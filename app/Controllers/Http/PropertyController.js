@@ -24,7 +24,14 @@ class PropertyController {
    * Create/save a new property.
    * POST properties
    */
-  async store ({ request, response }) {
+  async store ({ auth, request, response }) {
+    const { id } = auth.user
+
+    const data = request.only([
+
+    ])
+
+    const property = await Property.create({...data, user_id: id })
   }
 
   /**

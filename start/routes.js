@@ -17,7 +17,7 @@ const Route = use('Route')
 
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
-})
+}).middleware('auth')
 
 Route.post('/users', 'UserController.create')
 Route.post('/sessions', 'SessionController.create')
