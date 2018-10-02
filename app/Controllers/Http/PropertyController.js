@@ -75,7 +75,7 @@ class PropertyController {
   return property
   }
 
-  async teste ({ request }) {    
+  async teste ({ params }) {    
     const query = Database.table('properties')
                   .select('id', 'preco', 'areaPrivativa')
                   .where('user_id', 1)
