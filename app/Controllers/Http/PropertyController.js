@@ -70,6 +70,7 @@ class PropertyController {
     await property.load('images') 
     await property.load('owners') 
     await property.load('users')
+    await property.load('feedbacks')
   return property
   }
 
