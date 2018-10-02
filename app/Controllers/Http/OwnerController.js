@@ -1,5 +1,5 @@
 'use strict'
-
+const Owner = use('App/Models/Owner')
 /**
  * Resourceful controller for interacting with owners
  */
@@ -23,6 +23,17 @@ class OwnerController {
    * POST owners
    */
   async store ({ request, response }) {
+
+    const data = request.only([
+      'nome',
+      'cpfCnpj',
+      'telefone',
+      'tipoPessoa'
+
+
+    ])
+
+    const owner = await Owner.create({...data })
   }
 
   /**

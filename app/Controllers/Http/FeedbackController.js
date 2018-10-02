@@ -1,5 +1,5 @@
 'use strict'
-
+const Feedback = use('App/Models/Feedback')
 /**
  * Resourceful controller for interacting with feedbacks
  */
@@ -22,7 +22,12 @@ class FeedbackController {
    * Create/save a new feedback.
    * POST feedbacks
    */
-  async store ({ request, response }) {
+  async store ({ params, request, response }) {
+    const data = request.only([
+      'comentario'
+    ])
+
+    const feedback = await Feedback.create({...data, user_id:params.user, property_id:params.property })
   }
 
   /**
