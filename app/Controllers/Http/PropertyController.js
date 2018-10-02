@@ -1,5 +1,6 @@
 'use strict'
 const Property = use('App/Models/Property')
+const Database = use('Database')
 /**
  * Resourceful controller for interacting with properties
  */
@@ -72,6 +73,18 @@ class PropertyController {
     await property.load('users')
     await property.load('feedbacks')
   return property
+  }
+
+  async teste ({ request }) {    
+    const query = Database.table('properties')
+                  .select('id', 'preco', 'areaPrivativa')
+                  .where('user_id', 1)
+                  .where('owner_id', 2)
+                    
+          
+    
+   
+    return query
   }
 
 

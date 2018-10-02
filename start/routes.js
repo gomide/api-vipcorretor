@@ -14,7 +14,7 @@
 */
 
 const Route = use('Route')
-
+const Database = use('Database')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 }).middleware('auth')
@@ -28,3 +28,4 @@ Route.post('properties/:id/images', 'ImageController.store')
 Route.post('properties', 'PropertyController.store')
 Route.post('/owner', 'OwnerController.store')
 Route.post('/feedback/:user/:property', 'FeedbackController.store')
+Route.post('/teste', 'PropertyController.teste')
