@@ -54,7 +54,16 @@ class PropertyController {
       'empresa',
       'tipo',
       'bairro',
-      'regiao'
+      'regiao',
+      'cidade',
+      'mobilia',
+      'cobertura',
+      'exclusividade',
+      'dormitorio',
+      'garagem',
+      'banheiro',
+      'suite',
+      'morador'
 
     ])
 
@@ -75,11 +84,31 @@ class PropertyController {
   return property
   }
 
-  async teste ({ params }) {    
+  async teste ({ request }) {   
+    const data = request.only(
+      ['precoMin', 
+      'precoMax', 
+      'areaMin', 
+      'areaMax', 
+      'departamento',
+      'qtdQuartosMin',
+      'qtdQuartosMax'
+    ])
+    const precoMin = data.precoMin
+    const precoMax = data.precoMax
+    const areaMax = data.areaMax
+    const areaMin = data.areaMin
+    const departamento = data.departamento
+    const qtdQuartosMin = data.qtdQuartosMin
+    const qtdQuartosMax = data.qtdQuartosMax
     const query = Database.table('properties')
-                  .select('id', 'preco', 'areaPrivativa')
-                  .where('user_id', 1)
-                  .where('owner_id', 2)
+                  .select('id', 'descricao' , 'preco', 'areaTotal', 'codigoAnuncio', 'bairro', 'tipo', 'dormitorio')
+                  .whereBetween('preco', [precoMin, precoMax])
+                  .whereBetween('areaTotal', [areaMin, areaMax])
+                  .whereBetween('dormitorio', [qtdQuartosMin, qtdQuartosMax])
+                  .where('departamento', departamento)
+                  
+                  
                     
           
     
