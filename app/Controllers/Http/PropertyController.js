@@ -92,7 +92,8 @@ class PropertyController {
       'areaMax', 
       'departamento',
       'qtdQuartosMin',
-      'qtdQuartosMax'
+      'qtdQuartosMax',
+      'tipo'
     ])
     const precoMin = data.precoMin
     const precoMax = data.precoMax
@@ -101,12 +102,24 @@ class PropertyController {
     const departamento = data.departamento
     const qtdQuartosMin = data.qtdQuartosMin
     const qtdQuartosMax = data.qtdQuartosMax
+    const tipo = data.tipo
     const query = Database.table('properties')
-                  .select('id', 'descricao' , 'preco', 'areaTotal', 'codigoAnuncio', 'bairro', 'tipo', 'dormitorio')
+                  .select('id', 
+                  'descricao' , 
+                  'preco', 
+                  'areaTotal', 
+                  'codigoAnuncio', 
+                  'bairro', 
+                  'endereco', 
+                  'tipo', 
+                  'dormitorio',
+                  'exclusividade'
+                )
                   .whereBetween('preco', [precoMin, precoMax])
                   .whereBetween('areaTotal', [areaMin, areaMax])
                   .whereBetween('dormitorio', [qtdQuartosMin, qtdQuartosMax])
                   .where('departamento', departamento)
+                  .where('tipo', tipo)
                   
                   
                     
